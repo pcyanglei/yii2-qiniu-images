@@ -1,6 +1,6 @@
 yii2 七牛多图直传
 ===========
-一款直传七牛的yii2图片widget
+一款直传七牛的yii2图片widget 浏览器直传(没试过IE) 没有做分片上传  
 
 Installation
 ------------
@@ -30,7 +30,7 @@ Once the extension is installed, simply use it in your code by  :
 ```php
     <?= $form->field($model, 'images')->widget(QiniuFileInput::className(),[
         'options' => [
-            'class' => 'btn-danger'
+            'class' => 'btn-danger'//按钮class
         ],
         'qlConfig' => [
             'accessKey' => 'Q7wmo6VClEeYqnVnMSGdUBb7k0bl86KV5XLyh60N',
@@ -39,10 +39,10 @@ Once the extension is installed, simply use it in your code by  :
             'cdnUrl' => 'http://ouv520g7c.bkt.clouddn.com',//外链域名
         ],
         'clientOptions' => [
-            'max' => 5,
-            'size' => 204800,
-            'btnName' => 'upload',
-            'accept' => 'image/jpeg,image/gif,image/png'
+            'max' => 5,//最多允许上传图片个数
+            'size' => 204800,//每张图片大小
+            'btnName' => 'upload',//上传按钮名字
+            'accept' => 'image/jpeg,image/gif,image/png'//上传允许类型
         ],
         'pluginEvents' => [
             'delete' => 'function(item){console.log(item)}',
@@ -51,3 +51,54 @@ Once the extension is installed, simply use it in your code by  :
     ]) ?>
 
 ```
+
+
+流程  :
+
+	图片成功上传到七牛后,以数组的形式保存资源地址(外链域名+资源名)到当前模型的属性,例如:
+	
+	当前goods模型 添加一个成员属性 images 只支持required规则
+
+-----
+model
+
+```php
+class Goods extends \yii\db\ActiveRecord
+{
+    public $images;
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['images'], 'required']
+        ];
+    }
+}
+```
+-----
+
+当提交form后端将收到如下类型的数据
+  [Goods] => Array
+    (
+        [images] => Array
+            (
+                [0] => http://ouv520g7c.bkt.clouddn.com/2017/9/er14pygpvq.jpg
+                [1] => http://ouv520g7c.bkt.clouddn.com/2017/9/r5c0eidcx8.jpg
+            )
+    )
+-----
+
+更新如何显示已有数据
+
+```php
+$model->images = [
+	'http://ouv520g7c.bkt.clouddn.com/2017/9/er14pygpvq.jpg',
+	'http://ouv520g7c.bkt.clouddn.com/2017/9/r5c0eidcx8.jpg'
+]
+```
+	
+	
+	
+	
