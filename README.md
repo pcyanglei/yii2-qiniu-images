@@ -80,6 +80,7 @@ class Goods extends \yii\db\ActiveRecord
 -----
 
 当提交form后端将收到如下类型的数据
+```php
   [Goods] => Array
     (
         [images] => Array
@@ -88,6 +89,7 @@ class Goods extends \yii\db\ActiveRecord
                 [1] => http://ouv520g7c.bkt.clouddn.com/2017/9/r5c0eidcx8.jpg
             )
     )
+```
 -----
 
 更新如何显示已有数据
