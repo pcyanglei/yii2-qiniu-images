@@ -7,6 +7,7 @@ use yii\helpers\Json;
 use yii\web\JsExpression;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
+use Exception;
 
 class QiniuFileInput extends InputWidget
 {
@@ -36,8 +37,6 @@ class QiniuFileInput extends InputWidget
      */
     public $uploadUrl = 'http://up-z2.qiniu.com';
     
-    
-    public $value;
     /**
      * @var string
      */
@@ -84,7 +83,7 @@ class QiniuFileInput extends InputWidget
         try {
             $auth = new Auth($this->qlConfig['accessKey'], $this->qlConfig['secretKey'], $this->qlConfig['scope']);
             $this->cdnUrl = $this->qlConfig['cdnUrl'];
-        }catch (\Exception $e) {
+        }catch (Exception $e) {
             throw new InvalidConfigException('qlConfig::'.$e->getMessage());
         }
         if (!empty($this->policy)) {
@@ -110,6 +109,8 @@ class QiniuFileInput extends InputWidget
             $el = $this->getElName();
             $id = html::getInputId($this->model, $this->attribute);
             $name = Html::getInputName($this->model, $this->attribute);
+            $butName = isset($this->clientOptions['btnName']) ? $this->clientOptions['btnName'] : '请选择';
+            $butClass  = isset($this->options['class']) ?$this->options['class'] : 'btn-success';
             $html = <<<HTML
                     <div id="$el">
                         <div class="zh-images" v-if="imageList.length > 0 || errMessage != ''">
@@ -123,8 +124,8 @@ class QiniuFileInput extends InputWidget
                         <div class="progress" v-if="progress > 0">
                             <div class="progress-bar" :style="{ width: progress+'%'}">{{progress}}%</div>
                         </div>
-                        <div class="file-btn">
-                            <span>请选择</span>
+                        <div class="btn file-btn $butClass">
+                            <span>$butName</span>
                             <template v-if="imageList.length > 0">
                             <input type="hidden" name="{$name}[]" v-model="img.name" v-for="img in imageList" v-if="imageList.length > 0" id="$id">
                             </template>
@@ -148,7 +149,7 @@ HTML;
         if (!empty($this->pluginEvents)) {
             foreach ($this->pluginEvents as $event => $handler) {
                 $function = $handler instanceof JsExpression ? $handler : new JsExpression($handler);
-                $config['on'.$event] = $handler;
+                $config['on'.$event] = $function;
             }
         }
         $js = Json::encode($config);

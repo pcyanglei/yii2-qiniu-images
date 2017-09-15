@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "bower-asset/vue": ">=2.4.*"
     },
     "autoload": {
         "psr-4": {
