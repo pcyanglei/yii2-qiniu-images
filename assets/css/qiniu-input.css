@@ -1,0 +1,95 @@
+.zh-images {
+  border: 1px dashed #999;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-height: 100px;
+  padding: 10px;
+}
+
+.zh-images .err-box {
+  height: 50px;
+  color: #a94442;
+  background-color: #f2dede;
+  line-height: 50px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.zh-images .err-box .close {
+  line-height: 50px;
+  margin-right: 5px;
+  color: #fff;
+  opacity: .8;
+  float: right;
+}
+
+.zh-images .zh-images-items {
+  display: inline-block;
+  overflow: hidden;
+  -webkit-box-shadow: 1px 1px 5px 0 #a2958a;
+          box-shadow: 1px 1px 5px 0 #a2958a;
+  padding: 6px;
+  margin: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.zh-images .zh-images-items img {
+  max-height: 150px;
+}
+
+.zh-images .zh-images-items .zh-cover {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  left: 0;
+  bottom: 0;
+  display: none;
+  -webkit-transition: opacity 6s linear 0s;
+  transition: opacity 6s linear 0s;
+}
+
+.zh-images .zh-images-items .zh-cover i {
+  color: #fff;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.zh-images .zh-images-items:hover .zh-cover {
+  display: block;
+  color: #ffffff;
+}
+
+.file-btn {
+  position: relative;
+  overflow: hidden;
+  height: 36px;
+  width: 70px;
+  line-height: 36px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #5cb85c;
+  z-index: 2;
+}
+
+.file-btn input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  opacity: 0;
+  background: none;
+  display: block;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=qiniu-input.css.map */

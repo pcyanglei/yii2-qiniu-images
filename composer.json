@@ -1,0 +1,21 @@
+{
+    "name": "zh/yii2-qiniu-images",
+    "description": "一款直传七牛的yii2图片widget",
+    "type": "yii2-extension",
+    "keywords": ["yii2","images","七牛","多图"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "yanghu",
+            "email": "127802495@qq.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "zh\\qiniu\\": ""
+        }
+    }
+}
