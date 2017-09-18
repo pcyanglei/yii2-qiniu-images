@@ -29,9 +29,10 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
     <?= $form->field($model, 'images')->widget(QiniuFileInput::className(),[
-        'options' => [
-            'class' => 'btn-danger'//按钮class
-        ],
+        //'options' => [
+        //   'class' => 'btn-danger'//按钮class
+        //],
+        //'uploadUrl' => 'http://up-z2.qiniu.com',文件上传地址 不同地区的空间上传地址不一样 参见官方文档
         'qlConfig' => [
             'accessKey' => 'Q7wmo6VClEeYqnVnMSGdUBb7k0bl86KV5XLyh60N',
             'secretKey' => 'Y8JOtfZvHWsTXcy0CG_0zDNSrwls6p530k0LuT61',
@@ -39,15 +40,15 @@ Once the extension is installed, simply use it in your code by  :
             'cdnUrl' => 'http://ouv520g7c.bkt.clouddn.com',//外链域名
         ],
         'clientOptions' => [
-            'max' => 5,//最多允许上传图片个数
-            'size' => 204800,//每张图片大小
-            'btnName' => 'upload',//上传按钮名字
-            'accept' => 'image/jpeg,image/gif,image/png'//上传允许类型
+            'max' => 5,//最多允许上传图片个数  默认为3
+            //'size' => 204800,//每张图片大小
+            //'btnName' => 'upload',//上传按钮名字
+            //'accept' => 'image/jpeg,image/gif,image/png'//上传允许类型
         ],
-        'pluginEvents' => [
-            'delete' => 'function(item){console.log(item)}',
-            'success' => 'function(res){console.log(res)}'
-        ]
+        //'pluginEvents' => [
+        //    'delete' => 'function(item){console.log(item)}',
+        //    'success' => 'function(res){console.log(res)}'
+        //]
     ]) ?>
 
 ```
