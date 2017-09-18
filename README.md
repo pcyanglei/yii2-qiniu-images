@@ -16,7 +16,7 @@ php composer.phar require --prefer-dist zh/yii2-qiniu-images "dev-master"
 or add
 
 ```
-"zh/yii2-qiniu-images": "*"
+"zh/yii2-qiniu-images": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
