@@ -173,7 +173,7 @@ HTML;
         $config['token'] = $this->getToken();
         $config['cdnUrl'] = $this->cdnUrl;
         $config['el'] = '#'.$this->getElName();
-        if (($value = Html::getAttributeValue($this->model, $this->attribute)) !== null) {
+        if (($value = Html::getAttributeValue($this->model, $this->attribute)) != null) {
             $config['imageList'] = (array) $value;
         }
         return $config;
