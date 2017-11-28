@@ -34,10 +34,10 @@ Once the extension is installed, simply use it in your code by  :
         //],
         //'uploadUrl' => 'http://up-z2.qiniu.com',文件上传地址 不同地区的空间上传地址不一样 参见官方文档
         'qlConfig' => [
-            'accessKey' => 'Q7wmo6VClEeYqnVnMSGdUBb7k0bl86KV5XLyh60N',
-            'secretKey' => 'Y8JOtfZvHWsTXcy0CG_0zDNSrwls6p530k0LuT61',
-            'scope'=>'test',
-            'cdnUrl' => 'http://ouv520g7c.bkt.clouddn.com',//外链域名
+            'accessKey' => '你的七牛key',
+            'secretKey' => '你的七牛secretKey',
+            'scope'=>'你的空间名',
+            'cdnUrl' => 'http://URL',//外链域名
         ],
         'clientOptions' => [
             'max' => 5,//最多允许上传图片个数  默认为3
